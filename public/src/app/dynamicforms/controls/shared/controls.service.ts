@@ -13,8 +13,21 @@ export class ControlsService {
     controls.forEach(control => {
       group[control.key] = control.required ? new FormControl(control.value || '', [Validators.required])
                                               : new FormControl(control.value || '');
+      group[control.key].controlType = control.controlType;
+
+      if (control.controlType == 'file') {
+        group[control.key+'file'] = new FormControl(control.value || '');
+      }
     });
     return new FormGroup(group);
+  }
+
+  resetFormGroup(controls: Controls<any>[] ) {
+    
+
+    controls.forEach(control => {
+      control.reset();
+    });
   }
 }
 

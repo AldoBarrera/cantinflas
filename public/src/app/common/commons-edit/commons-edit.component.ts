@@ -60,7 +60,17 @@ export class CommonsEditComponent extends CommonsAddComponent {
  }
   responseData(data) {    
     if (data) {
-      this.form.setValue(data);
+      for (const property in data) {
+        for (const control of this.controls) {
+          if (control.key == property) {
+            control.value = data[property];
+          }
+        }
+
+      this.form.controls[property].setValue(data[property]);
+      }
+      
+      
     } 
   }
   

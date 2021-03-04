@@ -36,10 +36,10 @@ class App {
   // Configure Express middleware.
   private middleware(): void {
 
-    this.express.use(bodyParser.json());
-    this.express.use(bodyParser.urlencoded({ extended: false }));
-    //this.express.use(cors({origin: 'http://localhost:4200'}));
+    this.express.use(bodyParser.json({limit: '50mb'}));
+    this.express.use(bodyParser.urlencoded({limit: '50mb', extended: true }));
 
+    //this.express.use(cors({origin: 'http://localhost:4200'}));
     this.express.use(function (req, res, next) {
       let httpRequest = new Date() + req.method + req.url;
       console.log(httpRequest);

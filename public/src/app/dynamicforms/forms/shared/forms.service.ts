@@ -3,6 +3,7 @@ import { Injectable }       from '@angular/core';
 import { Controls }     from '../../controls/shared/controls';
 import { Textbox }  from '../../controls/shared/controls-textbox';
 import { Dropdown }  from '../../controls/shared/controls-dropdown';
+import { File }  from '../../controls/file/controls-file';
 
 @Injectable()
 export class FormsService {
@@ -14,9 +15,12 @@ export class FormsService {
       if(field.control.toLowerCase() == "textbox") {
          this.fields.push(new Textbox(field))
       }
-	  if(field.control.toLowerCase() == "dropdown") {
+	    if(field.control.toLowerCase() == "dropdown") {
         this.fields.push(new Dropdown(field))
-      } 	  
+      }
+      if(field.control.toLowerCase() == "file") {
+        this.fields.push(new File(field))
+      }	  
     }
   }
   getFields() {

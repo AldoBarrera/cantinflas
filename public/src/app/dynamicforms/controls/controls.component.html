@@ -10,7 +10,8 @@
         <option *ngFor="let opt of control.options" [value]="opt.key">{{opt.value}}</option>
       </select>
 
-      
+      <control-file *ngSwitchCase="'file'" [control] = "control" [form] = form> </control-file>
+
     </ng-container>
 
     <div *ngIf="!isValid "

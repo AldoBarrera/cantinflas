@@ -28,7 +28,9 @@ export class FormsComponent implements OnInit {
   onSubmit() {
     this.onSubmitCallback.emit(this.form.value);
     this.payLoad = JSON.stringify(this.form.value);
-    if(!this.isEdit)
-    this.form.reset();
+    if(!this.isEdit) {
+      this.contorlsService.resetFormGroup(this.controls);
+      this.form.reset();
+    }      
   }
 }
