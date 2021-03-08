@@ -1,8 +1,8 @@
 ﻿
 
 
-<button type="button" class="btn btn-primary" (click)="refresh()" data-toggle="modal" [attr.data-target]="'#addOrderDetailsModal'+ product._id">
-  Add Producto to Order
+<button type="button" class="btn btn-primary" (click)="refresh()"  [disabled]="!hasAvailability()" data-toggle="modal" [attr.data-target]="'#addOrderDetailsModal'+ product._id">
+  Add Producto to Order Availability : {{checkAvailability()}}
 </button>
 
 <!-- Modal -->
@@ -10,7 +10,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="addOrderDetailsModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="addOrderDetailsModalLabel">Modal title: {{checkAvailability()}}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

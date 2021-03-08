@@ -34,15 +34,17 @@
 <td><img width = "200" height = "200" src = "{{ singleData.dish_image }}" /></td> 
 <td>{{ singleData.dish_description }}</td> 
 
-       <app-orderdetails-addform2modal [product]="singleData" [order]="currentData"></app-orderdetails-addform2modal>
+       <app-orderdetails-addform2modal [availability] = "availability[singleData._id]" [product]="singleData" [order]="currentData"></app-orderdetails-addform2modal>
     </tr>
   </tbody>
 </table>
 
   <app-order-addform2modal (onCurrentDataChange)=onCurrentDataChange($event)></app-order-addform2modal>
   <app-orderpublic [order]="currentData" (onCurrentDataChange)=onCurrentDataChange($event)></app-orderpublic>
-  <app-orderdetailspublic [order]="currentData"></app-orderdetailspublic>
+  <app-orderdetailspublic  (onCompleteData)=onCompleteDataDetails($event) [order]="currentData"></app-orderdetailspublic>
 
+
+  <app-inventory [onlyRead] = "true" (onCompleteData)=onCompleteData($event)></app-inventory>
   
 
 

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter} from '@angular/core';
 import {CommonsComponent} from "../../../common/commons.component";
 import {default as config} from '../config/config.json';
 import {OrderDetailsService} from "./shared/orderdetails.service";

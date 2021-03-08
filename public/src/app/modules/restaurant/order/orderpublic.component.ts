@@ -28,8 +28,11 @@ export class OrderPublicComponent extends CommonsComponent {
      //this.data=CommonsArray.create();
      this.data.addElementsMissing(data);
     }
-    this.currentData = JSON.parse(JSON.stringify(data[data.length - 1]));
-    this.onCurrentDataChange.emit(this.currentData)
+    if(data.length > 0 ) {
+      this.currentData = JSON.parse(JSON.stringify(data[data.length - 1]));
+      this.onCurrentDataChange.emit(this.currentData)
+    }
+    
  }
 
   ngOnInit() {    
