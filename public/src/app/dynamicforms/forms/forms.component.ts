@@ -13,6 +13,8 @@ export class FormsComponent implements OnInit {
 
   @Input() controls: Controls<any>[] = [];
   @Input() isEdit: any;
+  @Input() idModal: any;
+  @Input() isModal: any;
   @Output() onSubmitCallback = new EventEmitter();
   @Output() onCompleteForm = new EventEmitter();
   form: FormGroup;
@@ -31,6 +33,9 @@ export class FormsComponent implements OnInit {
     if(!this.isEdit) {
       this.contorlsService.resetFormGroup(this.controls);
       this.form.reset();
-    }      
+    }
+    if(this.isModal) {
+      document.getElementById(this.idModal).click(); 
+    }     
   }
 }

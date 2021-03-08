@@ -1,0 +1,45 @@
+﻿<select class="form-control" [id]="'orderDropDown'" [(ngModel)]="order._id" #mySelect  (change)="OnChangeDropdown(mySelect.value)">
+  <option *ngFor="let opt of data" [value]="opt._id">{{opt.ordn_name}}</option>
+</select>
+<h1>
+  Numero total de pedidos: {{ data.length }}.
+
+  Numero del Pedido: {{ order.ordn_name }}.
+</h1>
+
+
+
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>   
+	   <th scope="col">Id</th> 
+<th scope="col">V</th> 
+<th scope="col">Pedido</th> 
+<th scope="col">Date</th> 
+<th scope="col">Modificar</th> 
+<th scope="col">Remover</th> 
+
+
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr >  
+    
+       <th scope="row"> 
+<a routerLink="{{order._id}}" routerLinkActive="active"> 
+{{ order._id }} 
+</a> 
+</th> 
+<td>{{ order.__v }}</td> 
+<td>{{ order.ordn_name }}</td> 
+<td>{{ order.ordn_date }}</td> 
+
+    
+      
+    </tr>
+  </tbody>
+</table>
+

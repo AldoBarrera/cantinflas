@@ -26,7 +26,7 @@ export class CommonsService {
   public pref:string;
   public keyName:string;
   public data = CommonsArray.create(); 
-  
+  public currentData: any = {};
   protected remoteEvents = new Subject<any>();
   protected remoteMethods:any = {};
   constructor(
@@ -41,6 +41,10 @@ export class CommonsService {
       } );
 
      }
+
+     setCurrentData() {
+      this.currentData = this.data[this.data.length - 1];
+    }
 
   setKeyName(setKeyName:string) {
     this.data.setKeyName(setKeyName);
@@ -193,7 +197,7 @@ export class CommonsService {
    * @param operation - name of the operation that failed
    * @param result - optional value to return as the observable result
    */
-  private handleError<T> (operation = 'operation', result?: T) {
+  protected handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
       // TODO: send the error to remote logging infrastructure
@@ -209,7 +213,7 @@ export class CommonsService {
 
   
   /** Log a SubnetsService message with the MessageService */
-  private log(message: string) {
+  protected log(message: string) {
     this.messageService.add(`SubnetsService: ${message}`);
   }
 }

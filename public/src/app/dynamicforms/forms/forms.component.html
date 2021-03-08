@@ -10,7 +10,11 @@
       <ng-container *ngIf ="isEdit">
         <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Edit</button>
       </ng-container>
+      <ng-container *ngIf ="isModal">
+        <button [id] = "idModal" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </ng-container>
 </form>
+
   
 
 

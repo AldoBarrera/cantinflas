@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { CommonsService } from '../shared/commons.service';
 import { CommonsUtil } from '../shared/commons.util';
 import { FormsService } from '../../dynamicforms/forms/shared/forms.service';
+import { CommonsArray } from '../shared/commons.array';
 
 @Component({
   selector: 'app-data-form',
@@ -13,8 +14,9 @@ import { FormsService } from '../../dynamicforms/forms/shared/forms.service';
 export class CommonsAddComponent implements OnInit {
   controls : any = [];
   controlsJson : any = [];
-  
+  protected data = CommonsArray.create();
   protected model: any = [];
+  public currentData: any = {};
   protected name: string;
   protected pref: string ;
   protected keyName: string ;
@@ -25,7 +27,9 @@ export class CommonsAddComponent implements OnInit {
     protected route: ActivatedRoute,
     protected commonService: CommonsService,
     protected formsService: FormsService
-  ) {    
+  ) {   
+    this.data = this.commonService.data; 
+    this.currentData = this.commonService.currentData; 
     this.controlsJson =  this.controlsJson.length == 0?this.getJasonControls():this.controlsJson.length;
     this.createForm();
     
@@ -49,6 +53,11 @@ export class CommonsAddComponent implements OnInit {
     this.controls = this.formsService.getFields();
   }
 
+  updateForm() {
+    CommonsUtil.setRelations(this.controlsJson, this.components, this.commonService);
+    this.controls = this.formsService.getFields();
+  }
+
   ngOnInit() {
     
   }
@@ -57,11 +66,16 @@ export class CommonsAddComponent implements OnInit {
     if (!form) { return; }
     this.commonService.addDataAsObserver(form).subscribe((data) => {
       this.commonService.data.addElement(data);
-      this.commonService.sendCommand( { type: this.name , data: data, action:"add" } );       
+      this.commonService.setCurrentData();
+      this.commonService.sendCommand( { type: this.name , data: data, action:"add" } );    
+      this.onCompleteSubmit(data);
     });
     
   }  
 
+  onCompleteSubmit(data) {
+
+  }
   getJasonControls() {
     return [{
       key: '__v',

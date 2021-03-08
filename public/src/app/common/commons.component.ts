@@ -11,12 +11,14 @@ import { CommonsArray } from './shared/commons.array';
 export class CommonsComponent implements AfterViewInit, OnInit, OnChanges  {
 
   protected data = CommonsArray.create(); 
+  public currentData: any ={};
   protected name: string ;
   protected pref: string ;
   protected keyName: string ;
   protected serverMessage: any;
   constructor(protected commonService: CommonsService) { 
     this.data = this.commonService.data;
+    this.currentData = this.commonService.currentData;
     
   }
 
