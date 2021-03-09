@@ -79,4 +79,8 @@ export class OrderAddModalComponent extends CommonsAddComponent {
   onCompleteForm(form) {
     this.forms = form;
   }
+
+  print() {
+    window.print();  
+  }
 }

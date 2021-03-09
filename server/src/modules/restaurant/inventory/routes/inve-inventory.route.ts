@@ -17,5 +17,25 @@ export class InveInventoryRoute extends App.CommonRouter {
         super.init();
         super.addSocket(io); 
     }
+
+    public async init() {
+      super.init();
+      this.router.get(this.dataRoute, this.GetAllData.bind(this));
+        this.router.get(this.singleDataRoute, this.GetSingleData.bind(this));
+    }
+
+    async GetAllData(req: Request, res: Response, next: NextFunction) {
+        let query = req.query;
+        let dataResponse;
+        let restrict = query.fields?JSON.parse(query.fields.toString()):null;
+        if (restrict){
+          dataResponse = await this.commonComponent.GetAllRestrictDataInventory(restrict);
+        } else if(query.populate) {
+          dataResponse = await this.commonComponent.GetPopulateDataInventory(query.date);
+        } else {
+          dataResponse = await this.commonComponent.GetAllDataInventory(query.date);
+        }
+        res.send(dataResponse);
+    }
 }
 

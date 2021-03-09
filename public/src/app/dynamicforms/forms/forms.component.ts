@@ -15,6 +15,7 @@ export class FormsComponent implements OnInit {
   @Input() isEdit: any;
   @Input() idModal: any;
   @Input() isModal: any;
+  @Input() isPrint: Boolean = false;
   @Output() onSubmitCallback = new EventEmitter();
   @Output() onCompleteForm = new EventEmitter();
   form: FormGroup;
@@ -28,14 +29,19 @@ export class FormsComponent implements OnInit {
   }
 
   onSubmit() {
-    this.onSubmitCallback.emit(this.form.value);
-    this.payLoad = JSON.stringify(this.form.value);
-    if(!this.isEdit) {
-      this.contorlsService.resetFormGroup(this.controls);
-      this.form.reset();
-    }
-    if(this.isModal) {
-      document.getElementById(this.idModal).click(); 
-    }     
+
+      this.onSubmitCallback.emit(this.form.value);
+      this.payLoad = JSON.stringify(this.form.value);
+      if(!this.isEdit) {
+        this.contorlsService.resetFormGroup(this.controls);
+        this.form.reset();
+      }
+      if(this.isModal) {
+        document.getElementById(this.idModal).click(); 
+      } 
+    
+        
   }
+
+  
 }

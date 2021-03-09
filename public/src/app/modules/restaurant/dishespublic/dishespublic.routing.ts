@@ -5,7 +5,7 @@ import { DishesPublicComponent } from './dishespublic.component';
 
 const dishesPublicRoutes: Routes = [
 
-    { path: 'dishespublic' , component: DishesPublicComponent, pathMatch: 'full' },
+    { path: 'public' , component: DishesPublicComponent, pathMatch: 'full' },
 ];
 
 export const dishesPublicRouting = RouterModule.forChild(dishesPublicRoutes);

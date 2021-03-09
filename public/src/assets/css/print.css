@@ -1,0 +1,42 @@
+@media print {
+    #bodycards {
+        display:none;
+     } 
+     #profile {
+        display:none;
+     } 
+     #profileSpace {
+        display:none;
+     }
+     #orderDropdown {
+        display:none;
+     }
+     
+     #leftBar {
+        padding: 0 !important;
+     } 
+     footer {
+        display:none;
+     }
+
+     #orderDropdownPrint {
+        padding: 1rem 1rem 1rem 1rem;
+        display: table !important;
+    }
+
+    #recent-orders {
+        border: 0 !important;
+    }
+
+    #tableOrders {
+        padding: 1 !important;
+    }
+    .badge-danger {
+        display: none;
+    }
+
+    
+
+   
+     
+}

@@ -9,7 +9,7 @@ export function initializer(keycloak: KeycloakService): () => Promise<any> {
         await keycloak.init({
           config: environment.keycloak,
           initOptions: {
-            onLoad: 'check-sso',
+            onLoad: 'login-required',
             checkLoginIframe: false
           },
           bearerExcludedUrls: [],

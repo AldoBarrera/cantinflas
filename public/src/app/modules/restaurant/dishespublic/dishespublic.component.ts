@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import {CommonsComponent} from "../../../common/commons.component";
 import {default as config} from '../config/config.json';
 import {DishesPublicService} from "./shared/dishespublic.service";
+import { KeycloakService, KeycloakAuthGuard } from 'keycloak-angular';
 
 @Component({
   selector: 'app-' + config['dishes'].component.name.toLowerCase() + 'public' ,
@@ -10,11 +11,12 @@ import {DishesPublicService} from "./shared/dishespublic.service";
 })
 export class DishesPublicComponent extends CommonsComponent {
 
+  isLogged: boolean
   @Input() datafromadd: any[] = [];
   public inventory: any[] = [];
   public details: any[] = [];
   public availability: any = {};
-  constructor(private dishesService: DishesPublicService) { 
+  constructor(private dishesService: DishesPublicService, public keycloakService: KeycloakService) { 
     super(dishesService);
     this.name = 'dishespublic';
 	  this.pref = 'disp';
@@ -22,6 +24,10 @@ export class DishesPublicComponent extends CommonsComponent {
   }
   ngOnInit() {    
     super.ngOnInit(); 
+    this.keycloakService.isLoggedIn().then(response => {
+      this.isLogged = response;
+   }); 
+    
   }
 
   addElements (data: any[]) {
@@ -71,4 +77,13 @@ export class DishesPublicComponent extends CommonsComponent {
         this.availability[product._id] =  this.availability[product._id] - aux;
       }
   } 
+
+  logout() {
+    this.keycloakService.logout();
+  }
+
+  login() {
+    this.keycloakService.login();
+  }
+
 }

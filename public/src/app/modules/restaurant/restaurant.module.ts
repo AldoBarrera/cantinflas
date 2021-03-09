@@ -48,6 +48,9 @@ import { inventoryRouting } from "./inventory/inventory.routing";
 import { DynamicFormsModule } from '../../dynamicforms/dynamicforms.module';
 
 import { MyFilterPipe } from './orderdetails/shared/pipes/my-filter.pipe';
+
+import { NavBarRestaurantComponent }      from './navBar/navbar.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -93,6 +96,7 @@ InventoryAddComponent,
 InventoryEditComponent, 
 InventorySearchComponent, 
 MyFilterPipe,
+NavBarRestaurantComponent
   ],
   exports: [
     DishesComponent, 

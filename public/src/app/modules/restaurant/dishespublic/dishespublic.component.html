@@ -1,47 +1,156 @@
-﻿<h1>
-  Displaying {{ data.length }} products.
-</h1>
+﻿
+<div class="mobile-sticky-body-overlay"></div>
+
+<div class="wrapper">
+  <div class="">
+    <div class="content-wrapper">
+      <div class="content">							<div class="bg-white border rounded">
+            <div class="row no-gutters">
+              <div class="col-lg-4 col-xl-3">
+                <div id = "leftBar" class="profile-content-left pt-5 pb-3 px-3 px-xl-5">
+                  <div id="profile" class="card text-center widget-profile px-0 border-0">
+                    <div class="card-img mx-auto rounded-circle">
+                      <img src="assets/img/elements/cc1.jpg" alt="user image">
+                    </div>
+                    <div class="card-body">
+                      <h4 class="py-2 text-dark">Cantinflas</h4>
+                      <p>cantinflas@gmail.com</p>
+                       <app-order-addform2modal (onCurrentDataChange)=onCurrentDataChange($event)></app-order-addform2modal>
+                    </div>
+                  </div>
+                  <hr id = "profileSpace" class="w-100">
+              
 
 
-<table class="table">
-  <thead class="thead-dark">
-    <tr>   
-	   <th scope="col">Id</th> 
-<th scope="col">V</th> 
-<th scope="col">Nombre</th> 
-<th scope="col">Precio</th> 
-<th scope="col">Imagen</th> 
-<th scope="col">description</th> 
-<th scope="col">Modificar</th> 
-<th scope="col">Remover</th> 
+<div class="card card-table-border-none" id="recent-orders">
+                <div id="orderDropdown" class="card-header justify-content-between" style="
+                padding: 1rem 1rem 1rem 1rem;
+            ">
+                  <div class="navbar navbar-expand-lg  navbar-dark bg-white" style="
+                  width: 100%;
+              ">
 
 
 
-    </tr>
-  </thead>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                      <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                          Pedido-{{currentData.ordn_name}}
+                        
+                      </li>
+                    <li class="nav-item dropdown"> 
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+                </a> 
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown"> 
+                
 
-  <tbody>
-    <tr *ngFor="let singleData of data">  
-    
-       <th scope="row"> 
-<a routerLink="{{singleData._id}}" routerLinkActive="active"> 
-{{ singleData._id }} 
-</a> 
-</th> 
-<td>{{ singleData.__v }}</td> 
-<td>{{ singleData.dish_name }}</td> 
-<td>{{ singleData.dish_precio }}</td> 
-<td><img width = "200" height = "200" src = "{{ singleData.dish_image }}" /></td> 
-<td>{{ singleData.dish_description }}</td> 
+ 
+  <app-orderpublic [order]="currentData" (onCurrentDataChange)=onCurrentDataChange($event)></app-orderpublic> 
+                </div> 
+                </li> 
+                
+                        
+                        
+                      </ul>
+                     
+                    </div>
+                  </div>
+        
+                  
 
-       <app-orderdetails-addform2modal [availability] = "availability[singleData._id]" [product]="singleData" [order]="currentData"></app-orderdetails-addform2modal>
-    </tr>
-  </tbody>
-</table>
 
-  <app-order-addform2modal (onCurrentDataChange)=onCurrentDataChange($event)></app-order-addform2modal>
-  <app-orderpublic [order]="currentData" (onCurrentDataChange)=onCurrentDataChange($event)></app-orderpublic>
-  <app-orderdetailspublic  (onCompleteData)=onCompleteDataDetails($event) [order]="currentData"></app-orderdetailspublic>
+
+
+
+                  
+                </div>
+
+                <div _ngcontent-npn-c0="" class="" id="orderDropdownPrint" style="
+                                      padding: 1rem 1rem 1rem 1rem;
+                                  ">Pedido-{{currentData.ordn_name}}
+                  </div>
+
+                <div id ="tableOrders" class="card-body pt-0 pb-5" style="
+                padding: 1rem 1rem;
+            ">
+                  
+                      <app-orderdetailspublic  (onCompleteData)=onCompleteDataDetails($event) [order]="currentData"></app-orderdetailspublic>
+                    
+                </div>
+              </div>												
+
+
+
+                    
+                  
+                </div>
+              </div>
+              <div id = "bodycards" class="col-lg-4 col-xl-9 card card-default">
+            <div class="card-header card-header-border-bottom">
+              <h2>Platos</h2>
+            </div>
+            <div class="card-body">
+              <div class="row">
+
+
+                <div  *ngFor="let singleData of data" class="col-md-6 col-xl-3">
+                  <div class="card mb-4">
+                    <img class="card-img-top" width="271" height="200"  src="{{ singleData.dish_image }}">
+                    <div class="card-body">
+                      <h5 class="card-title text-primary">{{ singleData.dish_name }}</h5>
+                      <p class="card-text pb-3">Precio:{{ singleData.dish_precio }}</p>
+                      <p> Descripción:{{ singleData.dish_description }}</p>
+                      
+                        <app-orderdetails-addform2modal [availability] = "availability[singleData._id]" [product]="singleData" [order]="currentData"></app-orderdetails-addform2modal>
+                     
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+            </div>
+          </div></div>
+
+      
+
+
+    </div>
+
+              <footer class="footer mt-auto">
+        <div class="copyright bg-white">
+          <p>
+            &copy; <span id="copy-year">2021</span> Copyright Cantinflas Powered by 
+            <a
+              class="text-primary"
+              href="https://www.facebook.com/aldoarielbarrera/"
+              target="_blank"
+              >Aldo</a
+            >.
+          </p>
+        </div>
+        <a routerLink="/inventory"  routerLinkActive="active" class="dropdown-item">Admin</a> 
+        <a routerLink="/public"  class="nav-link " (click)="logout()">Logout</a>
+        <script>
+            var d = new Date();
+            var year = d.getFullYear();
+            document.getElementById("copy-year").innerHTML = year;
+        </script>
+      </footer>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+  
 
 
   <app-inventory [onlyRead] = "true" (onCompleteData)=onCompleteData($event)></app-inventory>
