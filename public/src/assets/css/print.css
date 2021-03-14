@@ -20,7 +20,7 @@
      }
 
      #orderDropdownPrint {
-        padding: 1rem 1rem 1rem 1rem;
+        padding: 0;
         display: table !important;
     }
 
@@ -30,13 +30,26 @@
 
     #tableOrders {
         padding: 1 !important;
+        display: none;
     }
     .badge-danger {
         display: none;
     }
 
-    
+    #tableLeft {
+       border: 0  !important;
+    }
+    #tableOrderDetails {
+      display:none;
+   }
 
+   #printf{
+      display: table !important;;
+  }
+    
+.content {
+   padding: 0 !important;
+}
    
      
 }

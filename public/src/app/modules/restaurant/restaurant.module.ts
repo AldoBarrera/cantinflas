@@ -48,6 +48,8 @@ import { inventoryRouting } from "./inventory/inventory.routing";
 import { DynamicFormsModule } from '../../dynamicforms/dynamicforms.module';
 
 import { MyFilterPipe } from './orderdetails/shared/pipes/my-filter.pipe';
+import { MyFilter2Pipe } from './orderdetails/shared/pipes/my-filter2.pipe';
+import { MyFilter3Pipe } from './orderdetails/shared/pipes/my-filter3.pipe';
 
 import { NavBarRestaurantComponent }      from './navBar/navbar.component';
 
@@ -96,6 +98,8 @@ InventoryAddComponent,
 InventoryEditComponent, 
 InventorySearchComponent, 
 MyFilterPipe,
+MyFilter2Pipe,
+MyFilter3Pipe,
 NavBarRestaurantComponent
   ],
   exports: [

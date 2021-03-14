@@ -4,9 +4,9 @@ var qs = require('qs');
 var loginService = process.env.LOGIN_SERVICE || "localhost";
 var loginPort = process.env.LOGIN_PORT || "8080";
 var protocol = process.env.LOGIN_PROTOCOL || "http";
-var loginSecret = process.env.LOGIN_SECRET || "7c38dbdb-bbc5-400e-9d8c-66b5f78c39f2";
-var loginRealm = process.env.LOGIN_REALM || "Stack-realm";
-var loginClient = process.env.LOGIN_CLIENT || "stack";
+var loginSecret = process.env.LOGIN_SECRET || "a2569f29-19a8-499f-88fa-adc45894ebf1";
+var loginRealm = process.env.LOGIN_REALM || "cantinflas";
+var loginClient = process.env.LOGIN_CLIENT || "cantinflas";
 
 class Connect {  
   public token;

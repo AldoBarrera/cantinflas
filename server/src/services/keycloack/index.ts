@@ -4,9 +4,9 @@ var connect = require('./connect');
 var loginService = process.env.LOGIN_SERVICE || "localhost";
 var loginPort = process.env.LOGIN_PORT || "8080";
 var protocol = process.env.LOGIN_PROTOCOL || "http";
-var loginSecret = process.env.LOGIN_SECRET || "";
-var loginRealm = process.env.LOGIN_REALM || "";
-var loginClient = process.env.LOGIN_CLIENT || "";
+var loginSecret = process.env.LOGIN_SECRET || "a2569f29-19a8-499f-88fa-adc45894ebf1";
+var loginRealm = process.env.LOGIN_REALM || "cantinflas";
+var loginClient = process.env.LOGIN_CLIENT || "cantinflas";
 
 var memoryStore = new session.MemoryStore();
 

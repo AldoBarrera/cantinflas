@@ -3,8 +3,7 @@ import { Document, Model, Schema } from "mongoose";
 
 var order = {
     ordn_name: { 
-type:String, 
-unique:true, 
+type:String,
 required:true, 
 }, 
 ordn_date: { 

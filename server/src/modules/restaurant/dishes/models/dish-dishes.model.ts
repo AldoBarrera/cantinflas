@@ -22,6 +22,11 @@ type:String,
 unique:false, 
 required:false, 
 }, 
+dish_type: { 
+    type:String, 
+    unique:false, 
+    required:false, 
+    }, 
 
 }
 

@@ -13,3 +13,7 @@
 .card-table thead th {
     font-size:  0.80rem;
 }
+
+#printf{
+    display: none;
+}
