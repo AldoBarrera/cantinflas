@@ -33,4 +33,13 @@ export class OrderDetailsPublicComponent extends CommonsComponent {
     }
     this.onCompleteData.emit(data);
  }
+ calculateTotal(data: any[], orderId: String) {
+   var sum = 0;
+   for (var i = 0; i<data.length; i++) {
+     if(data[i].ordd_ordn_id._id === orderId) {
+       sum += (data[i].ordd_dish_id.dish_precio * data[i].ordd_count);
+     }
+   }
+   return sum;
+ }
 }
